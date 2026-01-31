@@ -29,7 +29,7 @@ const TournamentInfo = () => {
           className="text-center mb-14"
         >
           <h2 className="text-3xl md:text-4xl font-bold">
-            টুর্নামেন্ট <span className="text-green-400">নিয়মাবলী ও শর্ত</span>
+            Tournament <span className="text-green-400">Rules & Requirements</span>
           </h2>
           <p className="mt-4 text-gray-400 max-w-2xl mx-auto">
             ন্যায্য ও সুশৃঙ্খল টুর্নামেন্ট পরিচালনার জন্য নিচের নিয়মগুলো
