@@ -4,6 +4,7 @@ import Home from "../Layouts/HomeLayout/Home";
 import Registration from "../Pages/other-pages/Registration";
 import About from "../Pages/other-pages/About";
 import Contact from "../Pages/other-pages/Contact";
+import ErrorPage from "../Pages/other-pages/ErrorPage";
 
 export const router = createBrowserRouter([
     {
@@ -27,6 +28,10 @@ export const router = createBrowserRouter([
     {
         path : "/contact",
         Component : Contact
+    },
+    {
+        path : "*",
+        Component : ErrorPage
     }
     
 ])

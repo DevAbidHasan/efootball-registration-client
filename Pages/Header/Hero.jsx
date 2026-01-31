@@ -112,7 +112,7 @@ const HeroSection = () => {
           </Link>
 
           <Link
-            to="/rules"
+            to="/about"
             className="px-8 py-3 rounded-lg border border-white/20 text-white font-medium hover:bg-white/10 transition"
           >
             About
