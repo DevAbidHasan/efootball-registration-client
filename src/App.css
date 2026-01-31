@@ -1,0 +1,29 @@
+@import "tailwindcss";
+@plugin "daisyui";
+html {
+  scroll-behavior: smooth;
+}
+
+.nav-link {
+  @apply text-gray-300 hover:text-white transition;
+}
+
+.mobile-link {
+  @apply block text-gray-300 hover:text-white transition;
+}
+.info-card {
+  @apply p-6 rounded-xl bg-white/5 border border-white/10 text-center
+         hover:border-green-400/40 transition;
+}
+
+.info-card h4 {
+  @apply mt-3 font-semibold text-lg;
+}
+
+.info-card p {
+  @apply mt-1 text-sm text-gray-400;
+}
+
+.info-card .emoji {
+  @apply text-3xl;
+}
