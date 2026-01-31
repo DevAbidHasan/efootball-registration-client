@@ -5,7 +5,7 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="fixed top-0 left-0 w-full z-50 bg-blue-800 backdrop-blur">
+    <nav className="fixed top-0 left-0 w-full z-50 bg-zinc-950 border-b border-zinc-800 backdrop-blur">
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex justify-between items-center h-16">
 
@@ -64,7 +64,7 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div className="md:hidden bg-blue-800">
+        <div className="md:hidden bg-zinc-800">
           <div className="px-4 py-4 space-y-4">
             <Link onClick={() => setIsOpen(false)} to="/" className="mobile-link">Home</Link>
             <Link onClick={() => setIsOpen(false)} to="/tournament" className="mobile-link">Tournament</Link>

@@ -3,19 +3,19 @@ import { motion } from "framer-motion";
 const prizes = [
   {
     position: "Champion",
-    amount: "৳ 5,000",
+    amount: "Exciting Gifts",
     icon: "🥇",
     highlight: true,
   },
   {
     position: "Runner-Up",
-    amount: "৳ 3,000",
+    amount: "Exciting Gifts",
     icon: "🥈",
     highlight: false,
   },
   {
     position: "Semi Finalist",
-    amount: "৳ 1,000",
+    amount: "Exciting Gifts",
     icon: "🥉",
     highlight: false,
   },
@@ -41,7 +41,7 @@ const PrizePool = () => {
             Prize <span className="text-green-400">Pool</span>
           </h2>
           <p className="mt-4 text-gray-400">
-            Compete hard and win exciting cash prizes.
+            Compete hard and win exciting prizes.
           </p>
         </motion.div>
 
@@ -74,7 +74,7 @@ const PrizePool = () => {
                   {prize.position}
                 </h3>
 
-                <p className="text-3xl font-extrabold text-green-400">
+                <p className="text-3xl font-bold text-green-400">
                   {prize.amount}
                 </p>
               </div>
@@ -90,7 +90,7 @@ const PrizePool = () => {
           viewport={{ once: true }}
           className="mt-12 text-center text-sm text-gray-400"
         >
-          * Prize money will be distributed after tournament completion.
+          * Prize will be distributed after tournament completion.
         </motion.p>
       </div>
     </section>

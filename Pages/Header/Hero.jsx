@@ -1,9 +1,46 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router";
+import { useEffect, useState } from "react";
 
 const HeroSection = () => {
+  // Countdown target
+  const targetDate = new Date("2026-02-04T18:00:00"); // Feb 4, 6PM
+
+  const [timeLeft, setTimeLeft] = useState({
+    days: "00",
+    hours: "00",
+    minutes: "00",
+    seconds: "00",
+  });
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const now = new Date();
+      const difference = targetDate - now;
+
+      if (difference <= 0) {
+        clearInterval(interval);
+        setTimeLeft({ days: "00", hours: "00", minutes: "00", seconds: "00" });
+      } else {
+        const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((difference / (1000 * 60 * 60)) % 24);
+        const minutes = Math.floor((difference / 1000 / 60) % 60);
+        const seconds = Math.floor((difference / 1000) % 60);
+
+        setTimeLeft({
+          days: String(days).padStart(2, "0"),
+          hours: String(hours).padStart(2, "0"),
+          minutes: String(minutes).padStart(2, "0"),
+          seconds: String(seconds).padStart(2, "0"),
+        });
+      }
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
-    <section className="relative mt-6 min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-b from-black via-zinc-900 to-black">
+    <section className="relative mt-6 min-h-screen flex flex-col items-center justify-center overflow-hidden bg-gradient-to-b from-black via-zinc-900 to-black">
 
       {/* Background glow */}
       <div className="absolute inset-0">
@@ -19,17 +56,17 @@ const HeroSection = () => {
         className="relative z-10 max-w-4xl text-center px-4"
       >
         {/* Badge */}
-        <motion.div
+        {/* <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           whileInView={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.2 }}
-          className="inline-block mb-6 px-4 py-1 rounded-full border border-blue-400/ bg-blue-50/20 text-blue-400 text-sm tracking-wide"
+          className="inline-block mb-6 px-4 py-1 rounded-full border border-blue-400/50 bg-blue-50/10 text-blue-400 text-sm tracking-wide"
         >
           ⚽ Online E-Football Tournament
-        </motion.div>
+        </motion.div> */}
 
         {/* Heading */}
-        <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold text-white leading-tight">
+        <h1 className="text-3xl md:text-4xl lg:text-6xl font-extrabold text-white leading-tight">
           JKKNIU E-Football
           <span className="block text-green-400">
             Championship 2026
@@ -42,11 +79,29 @@ const HeroSection = () => {
           and win exciting prizes in a professional online tournament.
         </p>
 
+        {/* Countdown Timer */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3 }}
+          className=" flex flex-wrap justify-center gap-4 text-white font-bold text-sm"
+        >
+          {["days", "hours", "minutes", "seconds"].map((unit) => (
+            <div
+              key={unit}
+              className="flex mt-5 flex-col items-center bg-white/10 px-5 py-3 rounded-2xl border border-green-400/40 shadow-lg shadow-green-500/30"
+            >
+              <span className="text-2xl text-red-500">{timeLeft[unit]}</span>
+              <span className="text-sm text-white-300 lowercase mt-1">{unit}</span>
+            </div>
+          ))}
+        </motion.div>
+
         {/* Buttons */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.4 }}
+          transition={{ delay: 0.5 }}
           className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4"
         >
           <Link
@@ -60,27 +115,13 @@ const HeroSection = () => {
             to="/rules"
             className="px-8 py-3 rounded-lg border border-white/20 text-white font-medium hover:bg-white/10 transition"
           >
-            View Rules
+            About
           </Link>
         </motion.div>
       </motion.div>
 
       {/* Scroll Indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.2 }}
-        className="absolute bottom-12 md:bottom-3 flex flex-col items-center text-gray-400 text-sm"
-      >
-        <span>Scroll</span>
-        <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ repeat: Infinity, duration: 1.5 }}
-          className="mt-1"
-        >
-          ↓
-        </motion.div>
-      </motion.div>
+     
     </section>
   );
 };
